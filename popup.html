@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Site Time Guard</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font: 14px system-ui, sans-serif; margin: 12px; min-width: 320px; }
+      h1 { font-size: 16px; margin: 0 0 8px; }
+      table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+      th, td { padding: 6px; border-bottom: 1px solid #ddd; text-align: left; }
+      tfoot { font-size: 12px; opacity: .75; }
+      input[type="number"] { width: 80px; padding: 6px; }
+      .row { display: flex; gap: 8px; margin-top: 8px; align-items: center; }
+      .muted { opacity: .7; }
+      .btn { padding: 6px 10px; border-radius: 8px; border: 1px solid #ccc; cursor: pointer; background: transparent; }
+      .btn.primary { border-color: #888; }
+    </style>
+  </head>
+  <body>
+    <h1>Site Time Guard</h1>
+
+    <div class="row">
+      <input id="domainInput" placeholder="domain.com" />
+      <input id="minutesInput" type="number" min="1" step="1" placeholder="minutes/day" />
+      <button id="setBtn" class="btn primary">Save limit</button>
+    </div>
+
+    <table id="usageTable">
+      <thead>
+        <tr><th>Domain</th><th>Used</th><th>Limit</th><th></th></tr>
+      </thead>
+      <tbody id="usageBody"></tbody>
+      <tfoot>
+        <tr><td colspan="4" class="muted">Counts reset daily. Only tracks while active & not idle.</td></tr>
+      </tfoot>
+    </table>
+
+    <div class="row">
+      <button id="clearBtn" class="btn">Clear today</button>
+      <span id="activeLabel" class="muted"></span>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
